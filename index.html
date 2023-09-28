@@ -1,34 +1,58 @@
 <!DOCTYPE html>
 <html>
+
 <head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="images/favicon.png" type="image/x-icon">
+
   <title>Listar Colores de una Imagen</title>
+
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
-  <button id="copiarBtn">Copiar</button>
-  <div id="loader" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(255, 255, 255, 0.8); text-align: center;">
-      <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-          <img src="Images/1487.gif" alt="Loader">
-          <p>Cargando...</p>
-      </div>
-  </div>
 
-<label for="imagenInput" class="drop-container" id="dropcontainer">
+<body>
+  <div class="div__logo">
+    <img class="img-logo" src="images/png_Linkin DP.png" />
+  </div>
+  <div class="container">
+    <button id="copiarBtn" class="button-52">Copiar</button>
+    <div id="loader">
+      <div>
+        <img src="Images/1487.gif" alt="Loader">
+        <p>Cargando...</p>
+      </div>
+    </div>
+
+    <label for="imagenInput" class="drop-container" id="dropcontainer">
       <span class="drop-title">Suelta los archivos aquí</span>
       <input type="file" id="imagenInput" accept="png" required>
-  </label>
-<table id="tablaColores">
-  <tr>
-    <th>Color</th>
-    <th>Código Hex</th>
-    <th>Cantidad de Piezas</th>
-    <th>Número proveedor</th>
-    <th>Nombre color</th> 
-  </tr>
-</table>
-<br>
-<img id="imagenPreview" />
-
-<script src="app.js"></script>
+    </label>
+    <table id="tablaColores">
+      <tr>
+        <th>Color</th>
+        <th>Código Hex</th>
+        <th>Cantidad de Piezas</th>
+        <th>Número proveedor</th>
+        <th>Nombre color</th>
+      </tr>
+    </table>
+    <br>
+    <img id="imagenPreview" />
+  </div>
+  <div class="footer">
+    <p>Desarrollado por Mushroom 🍄</p>
+    <a href="https://www.instagram.com/mushroom.dev/?hl=es-la">Sígueme en Instagram</a>
+</div>
+<script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
+<script>
+  kofiWidgetOverlay.draw('mushroom47', {
+    'type': 'floating-chat',
+    'floating-chat.donateButton.text': 'Donate',
+    'floating-chat.donateButton.background-color': '#F3A950',
+    'floating-chat.donateButton.text-color': '#323842'
+  });
+</script>
+  <script src="app.js"></script>
 </body>
+
 </html>

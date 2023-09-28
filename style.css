@@ -1,4 +1,19 @@
-
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+  background-color: #101820;
+  color: #F2AA4C;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.container{
+  padding: 2% 5%;
+  max-width: 100%;
+  width: calc(60vw - 2*5%);
+  margin: 0 auto;
+}
 #imagenPreview {
   min-width: 500px;
   image-rendering: pixelated;
@@ -8,7 +23,7 @@
   width: 100%;
 }
 #tablaColores th,  #tablaColores td {
-  border: 1px solid black;
+  border: 1px solid #F2AA4C;
   padding: 8px;
   text-align: left;
 }
@@ -24,25 +39,110 @@
   padding: 20px;
   margin: 30px 10px;
   border-radius: 10px;
-  border: 2px dashed #555;
-  color: #444;
+  border: 2px dashed #F2AA4C;
+  color: #F2AA4C;
   cursor: pointer;
   transition: background .2s ease-in-out, border .2s ease-in-out;
 }
 
 .drop-container:hover {
-  background: #eee;
-  border-color: #111;
+  background: #F2AA4C;
+  border-color: #F2AA4C;
+  color: #101820;
 }
 
 .drop-container:hover .drop-title {
-  color: #222;
+  color: #101820;
 }
 
 .drop-title {
-  color: #444;
+  color: #F2AA4C;
   font-size: 20px;
   font-weight: bold;
   text-align: center;
   transition: color .2s ease-in-out;
+}
+.div__logo{
+  background-color: #101820;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.img-logo{
+  width: 150px;
+  height: auto;
+}
+.button-52 {
+  font-size: 16px;
+  font-weight: 200;
+  letter-spacing: 1px;
+  padding: 13px 20px 13px;
+  outline: 0;
+  border: 1px solid #F2AA4C;
+  cursor: pointer;
+  position: relative;
+  background-color: rgba(0, 0, 0, 0);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-52:after {
+  content: "";
+  background-color: #F2AA4C;
+  width: 100%;
+  z-index: -1;
+  position: absolute;
+  height: 100%;
+  top: 7px;
+  left: 7px;
+  transition: 0.2s;
+}
+
+.button-52:hover:after {
+  top: 0px;
+  left: 0px;
+}
+
+#loader{
+  display: none; 
+  position: fixed; 
+  top: 0; left: 0; 
+  width: 100%; 
+  height: 100%; 
+  background-color: rgba(22, 27, 33, 0.8); 
+  text-align: center;
+}
+#loader div{
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+}
+/* Estilos para el div fijo en la parte inferior */
+.footer {
+  /* position: fixed; */
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
+}
+
+.footer p {
+  margin: 0;
+}
+
+.footer a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+@media (min-width: 768px) {
+  .button-52 {
+    padding: 13px 50px 13px;
+  }
+  .container {
+    width: calc(90vw - 2*5%); /* 90vw en pantallas más pequeñas */
+}
 }

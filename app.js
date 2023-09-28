@@ -57,7 +57,6 @@ function rgbToHex(color) {
     tabla.innerHTML = "";
 
     let totalPiezas = 0;
-    let totalValor = 0;
 
     var headerRow = tabla.insertRow(0);
     var header1 = headerRow.insertCell(0);
@@ -108,8 +107,12 @@ var rowIndex = row.rowIndex;
 // Verificar si el índice de fila es válido para acceder al array arrColores
 if (rowIndex >= 1 && rowIndex <= arrColores.length) {
   // Obtener el valor correspondiente del array arrColores
-  var valorColor = arrColores[valorIngresado];
-
+  var valorColor;
+    if(valorIngresado > 0 && valorIngresado <= arrColores.length-1){
+        valorColor = arrColores[valorIngresado];
+    }else{
+        valorColor = arrColores[0];
+    }
   // Mostrar el valor en la columna cell5
   var cell5 = row.cells[4]; // La columna cell5 es la quinta (índice 4)
   cell5.textContent = valorColor;
@@ -178,7 +181,7 @@ cell4.appendChild(inputProveedor);
       
 
 const arrColores = [
-'Mixed Colors',      'Red ',               'Jujube Red ',
+'No existe',      'Red ',               'Jujube Red ',
 'Rose Red ',         'Dark Pink ',         'Pink ',
 'Blue ',             'Sky Blue ',          'Light Blue ',
 'Royal Blue ',       'Flesh ',             'Earthy Yellow ',
