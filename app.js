@@ -217,5 +217,10 @@ const arrColores = [
 ]
 
 
-  // Asociar el evento de cambio del input de imagen a la función obtenerColores
-  document.getElementById('imagenInput').addEventListener('change', obtenerColores);
+// Asociar el evento de cambio del input de imagen a la función obtenerColores
+document.getElementById('imagenInput').addEventListener('change', obtenerColores);
+
+document.getElementById('gen-pdf').addEventListener('click', () => {
+  window.print();
+});
+

@@ -54,6 +54,11 @@ body{
 .drop-container:hover .drop-title {
   color: #101820;
 }
+.div__buttons{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
 
 .drop-title {
   color: #F2AA4C;
