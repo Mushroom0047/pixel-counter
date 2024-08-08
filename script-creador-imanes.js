@@ -19,12 +19,19 @@ document.getElementById('imageInput').addEventListener('change', function(event)
         border-collapse: collapse;
     }
     td {
-        width: 20px; /* Doble tamaño */
-        height: 20px;
+        width: 50px; /* Doble tamaño */
+        height: 50px;
         border: 1px solid #ccc;
+        text-align: center;
+        font-size: 12px;
+        color: #000;
     }
 </style>
 `;
+
+                const colorMap = {};
+                let colorCounter = 1;
+                let colorLegendHtml = '<div style="display: flex; flex-wrap: wrap;">';
 
                 for (let y = 0; y < img.height; y++) {
                     html += '    <tr>\n';
@@ -34,14 +41,34 @@ document.getElementById('imageInput').addEventListener('change', function(event)
                         const g = pixels[index + 1];
                         const b = pixels[index + 2];
                         const color = `rgb(${r},${g},${b})`;
-                        html += `        <td style="background-color: ${color};"></td>\n`;
+
+                        if (!colorMap[color]) {
+                            colorMap[color] = colorCounter++;
+                        }
+
+                        const colorNumber = colorMap[color];
+                        html += `        <td style="background-color: ${color};">${colorNumber}</td>\n`;
                     }
                     html += '    </tr>\n';
                 }
 
                 html += '</table>';
-                document.getElementById('pixelTable').innerHTML = html;
-                document.getElementById('generatedCode').value = html;
+
+                for (const [color, number] of Object.entries(colorMap)) {
+                    colorLegendHtml += `
+                    <div style="display: inline-block; text-align: center; margin: 5px;">
+                        <div style="width: 20px; height: 20px; background-color: ${color}; border: 1px solid #000;"></div>
+                        <div>${number}</div>
+                    </div>`;
+                }
+
+                colorLegendHtml += '</div>';
+
+                const fullHtml = html + colorLegendHtml;
+
+                document.getElementById('pixelTable').innerHTML = fullHtml;
+                document.getElementById('generatedCode').value = fullHtml;
+                document.getElementById('colorMap').innerHTML = colorLegendHtml;
             };
             img.src = e.target.result;
         };

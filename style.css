@@ -150,6 +150,10 @@ body{
   font-size: 0;
   display: inline-block;
 }
+#colorMap{
+  width: 100%;
+  margin: 0px auto;;
+}
 
 .pixel-cell {
   display: inline-block;
