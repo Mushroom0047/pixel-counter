@@ -143,6 +143,35 @@ body{
   margin-left: 10px;
 }
 
+#pixelTable {
+  margin-top: 20px;
+  white-space: pre-wrap;
+  line-height: 0;
+  font-size: 0;
+  display: inline-block;
+}
+
+.pixel-cell {
+  display: inline-block;
+  width: 20px; /* Doble tamaño */
+  height: 20px;
+  border: 1px solid #ccc; /* Borde de cada píxel */
+  box-sizing: border-box;
+}
+
+#generatedCode {
+  width: 80%;
+  height: 300px;
+  margin-top: 20px;
+  font-family: monospace;
+  font-size: 12px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  resize: none;
+}
+
+
 @media (min-width: 768px) {
   .button-52 {
     padding: 13px 50px 13px;
