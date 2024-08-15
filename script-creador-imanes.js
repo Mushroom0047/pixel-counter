@@ -13,13 +13,14 @@ document.getElementById('imageInput').addEventListener('change', function(event)
                 const imageData = ctx.getImageData(0, 0, img.width, img.height);
                 const pixels = imageData.data;
                 let html = `
-<table>
+<div style="max-width: 400px;">
+                <table>
 <style>
     table {
         border-collapse: collapse;
     }
     td {
-        width: 50px; /* Doble tamaño */
+        width: 50px;
         height: 50px;
         border: 1px solid #ccc;
         text-align: center;
@@ -27,6 +28,7 @@ document.getElementById('imageInput').addEventListener('change', function(event)
         color: #000;
     }
 </style>
+</div>
 `;
 
                 const colorMap = {};
@@ -43,22 +45,33 @@ document.getElementById('imageInput').addEventListener('change', function(event)
                         const color = `rgb(${r},${g},${b})`;
 
                         if (!colorMap[color]) {
-                            colorMap[color] = colorCounter++;
+                            colorMap[color] = {
+                                id: colorCounter++,
+                                count: 0
+                            };
                         }
 
-                        const colorNumber = colorMap[color];
-                        html += `        <td style="background-color: ${color};">${colorNumber}</td>\n`;
+                        colorMap[color].count++;
+
+                        const colorNumber = colorMap[color].id;
+
+                        // Verificar si el fondo es negro
+                        const textColor = (r + g + b < 128 * 3) ? '#FFFFFF' : '#000000';
+
+                        html += `        <td style="background-color: ${color}; color: ${textColor};">${colorNumber}</td>\n`;
                     }
                     html += '    </tr>\n';
                 }
 
                 html += '</table>';
 
-                for (const [color, number] of Object.entries(colorMap)) {
+                for (const [color, data] of Object.entries(colorMap)) {
                     colorLegendHtml += `
-                    <div style="display: inline-block; text-align: center; margin: 5px;">
-                        <div style="width: 20px; height: 20px; background-color: ${color}; border: 1px solid #000;"></div>
-                        <div>${number}</div>
+                    <div style="display:flex; flex-flow: column nowrap; justify-content: center; align-items: center; text-align: center; margin: 5px;">
+                        <div style="width: 30px; height: 30px; background-color: ${color}; border: 1px solid #000; display:flex; justify-content: center; align-items: center;">
+                            ${data.id}
+                        </div>
+                        <div>${data.count} Piezas</div>
                     </div>`;
                 }
 
