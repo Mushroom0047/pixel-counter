@@ -28,7 +28,6 @@ document.getElementById('imageInput').addEventListener('change', function(event)
         color: #000;
     }
 </style>
-</div>
 `;
 
                 const colorMap = {};
@@ -72,7 +71,7 @@ document.getElementById('imageInput').addEventListener('change', function(event)
                             ${data.id}
                         </div>
                         <div>${data.count} Piezas</div>
-                    </div>`;
+                    </div></div>`;
                 }
 
                 colorLegendHtml += '</div>';
