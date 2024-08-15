@@ -1,10 +1,10 @@
-document.getElementById('imageInput').addEventListener('change', function(event) {
+document.getElementById('imageInput').addEventListener('change', function (event) {
     const file = event.target.files[0];
     if (file && file.type === 'image/png') {
         const reader = new FileReader();
-        reader.onload = function(e) {
+        reader.onload = function (e) {
             const img = new Image();
-            img.onload = function() {
+            img.onload = function () {
                 const canvas = document.createElement('canvas');
                 const ctx = canvas.getContext('2d');
                 canvas.width = img.width;
@@ -13,22 +13,22 @@ document.getElementById('imageInput').addEventListener('change', function(event)
                 const imageData = ctx.getImageData(0, 0, img.width, img.height);
                 const pixels = imageData.data;
                 let html = `
-<div style="max-width: 400px;">
-                <table>
-<style>
-    table {
-        border-collapse: collapse;
-    }
-    td {
-        width: 50px;
-        height: 50px;
-        border: 1px solid #ccc;
-        text-align: center;
-        font-size: 12px;
-        color: #000;
-    }
-</style>
-`;
+                <div style="max-width: 400px; overflow-x: auto;">
+                    <table>
+                        <style>
+                            table {
+                                border-collapse: collapse;
+                            }
+                            td {
+                                width: 50px;
+                                height: 50px;
+                                border: 1px solid #ccc;
+                                text-align: center;
+                                font-size: 12px;
+                                color: #000;
+                            }
+                        </style>
+                `;
 
                 const colorMap = {};
                 let colorCounter = 1;
@@ -62,7 +62,7 @@ document.getElementById('imageInput').addEventListener('change', function(event)
                     html += '    </tr>\n';
                 }
 
-                html += '</table>';
+                html += '</table></div>'; // Cierra el div envolvente
 
                 for (const [color, data] of Object.entries(colorMap)) {
                     colorLegendHtml += `
@@ -71,7 +71,7 @@ document.getElementById('imageInput').addEventListener('change', function(event)
                             ${data.id}
                         </div>
                         <div>${data.count} Piezas</div>
-                    </div></div>`;
+                    </div>`;
                 }
 
                 colorLegendHtml += '</div>';
@@ -88,7 +88,7 @@ document.getElementById('imageInput').addEventListener('change', function(event)
     }
 });
 
-document.getElementById('copyButton').addEventListener('click', function() {
+document.getElementById('copyButton').addEventListener('click', function () {
     const codeArea = document.getElementById('generatedCode');
     codeArea.select();
     document.execCommand('copy');
